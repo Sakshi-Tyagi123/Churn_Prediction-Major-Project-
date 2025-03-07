@@ -1,0 +1,74 @@
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  text-align: center;
+  background-color: #f8f9fa;
+  padding-top: 80px; /* Adjusted to fit properly after navbar */
+  position: relative; /* Ensures elements are positioned correctly */
+}
+
+.logo-container {
+  position: absolute;
+  top: 15px; /* Adjusted to place just below the navbar */
+  left: 20px;
+}
+
+.result-logo {
+  width: 80px; /* Adjust logo size */
+  max-width: 100%; /* Prevents it from overflowing */
+}
+
+.tick-container {
+  margin-top: 50px;
+}
+
+.big-tick {
+  font-size: 150px;
+  color: green;
+}
+
+.completed-text {
+  font-size: 50px;
+  font-weight: bold;
+  color: green;
+  margin-top: 20px;
+}
+
+.button-container {
+  margin-top: 40px;
+}
+
+.download-btn {
+  background-color: #007bff; /* Blue */
+  color: white;
+  font-size: 18px;
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background-color: #0056b3; /* Darker blue */
+}
+
+.view-btn {
+  background-color: #ff5733; /* Bright Orange */
+  color: white;
+  font-size: 18px;
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.view-btn:hover {
+  background-color: #cc4422; /* Darker Orange */
+}

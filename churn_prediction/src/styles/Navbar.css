@@ -1,0 +1,48 @@
+/* Navbar Container */
+.navbar {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Left side (Home Icon) */
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Home Icon */
+.home-icon {
+  width: 30px; /* Adjust size as needed */
+  height: auto;
+  cursor: pointer; /* Makes it clear it's clickable */
+  transition: transform 0.2s ease-in-out;
+}
+
+.home-icon:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Right side (Links) */
+.nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+/* Navigation Links */
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #dfe6e9;
+  transform: scale(1.05); /* Slight hover effect */
+}
