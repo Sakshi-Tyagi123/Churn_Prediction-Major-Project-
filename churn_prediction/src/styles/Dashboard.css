@@ -67,24 +67,33 @@
     color: #666;
 }
 
-
-.churn-graphs {
-    margin-top: 40px;
-    text-align: center;
+/* Grid Layout for Charts */
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.graph-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.bar-chart, .pie-chart {
+.chart-card {
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 45%;
-    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
+
+/* Full-width charts for key insights */
+.full-width {
+    grid-column: span 2; /* Make selected charts span two columns */
+    width: 100%;
+}
+
+

@@ -7,13 +7,13 @@ from io import BytesIO
 
 app = FastAPI()
 
-# ✅ Add CORS Middleware (Right after creating the app instance)
+# ✅ Add CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Allow frontend to access API
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # ✅ Load model and encoders
@@ -51,33 +51,38 @@ def home():
 @app.post("/predict/")
 async def predict_churn(file: UploadFile = File(...)):
     try:
-        print(f"📂 Received file: {file.filename}")  # Debugging
+        print(f"📂 Received file: {file.filename}")
         contents = await file.read()
         df = pd.read_csv(BytesIO(contents))
-
-        print(f"📊 DataFrame Loaded: {df.shape}")  # Debugging
+        
+        print(f"📊 DataFrame Loaded: {df.shape}")
 
         # Preserve customerID before preprocessing
         customer_ids = df["customerID"] if "customerID" in df.columns else None
-
+        
+        # Preserve additional columns
+        additional_columns = df.drop(columns=["customerID"], errors='ignore')
+        
         # Preprocess data
         df = preprocess_data(df)
         X_input = df.drop(columns=['Churn'], errors='ignore')
-
-        print("🚀 Making Predictions...")  # Debugging
+        
+        print("🚀 Making Predictions...")
         predictions = model.predict(X_input)
-        print(f"✅ Predictions Generated: {predictions[:5]}")  # Debugging first 5
-
+        print(f"✅ Predictions Generated: {predictions[:5]}")
+        
         df['Churn_Prediction'] = np.where(predictions == 1, 'Yes', 'No')
-
-        # Include customerID in the response
-        result = df[['Churn_Prediction']].to_dict(orient="records")
+        
+        # Include customerID and additional columns in the response
+        result = df[['Churn_Prediction']].copy()
         if customer_ids is not None:
-            for i, cid in enumerate(customer_ids):
-                result[i]["customerID"] = cid
-
-        return {"predictions": result}
-
+            result.insert(0, "customerID", customer_ids.values)
+        
+        # Add back additional columns
+        result = pd.concat([result, additional_columns], axis=1)
+        
+        return {"predictions": result.to_dict(orient="records")}
+    
     except Exception as e:
-        print(f"❌ Error: {e}")  # Debugging
+        print(f"❌ Error: {e}")
         return {"error": str(e)}
