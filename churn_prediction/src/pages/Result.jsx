@@ -11,6 +11,11 @@ const Result = ({ predictions }) => {
   const navigate = useNavigate();
   const dashboardRef = useRef(null);
 
+  // ✅ Debugging: Check if predictions are coming
+  useEffect(() => {
+    console.log("Predictions Data in Result.jsx:", predictions);
+  }, [predictions]);
+
   useEffect(() => {
     console.log("Dashboard Ref:", dashboardRef.current);
   }, []);

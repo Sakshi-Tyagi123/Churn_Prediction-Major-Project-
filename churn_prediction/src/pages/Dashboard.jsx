@@ -192,46 +192,52 @@ predictions.forEach((customer) => {
       </div>
 
       <div className="charts-container">
-        <div className="chart-card">
-          <h2>Churn Prediction Distribution</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={churnData}>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="count" fill="#8884d8" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+      <div className="chart-card">
+    <h2>Churn Prediction Distribution</h2>
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart data={churnData}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        {/* Removed <Legend /> to completely remove the purple box */}
+        <Bar dataKey="count" fill="#8884d8" />
+      </BarChart>
+    </ResponsiveContainer>
+  </div>
         
-        <div className="chart-card">
-          <h2>Payment Method Distribution</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie data={paymentMethodData} dataKey="count" nameKey="name" cx="50%" cy="50%" outerRadius={100} label>
-                {paymentMethodData.map((entry, index) => (
-                  <Cell key={`cell-₹{index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+  <div className="chart-card">
+  <h2>Payment Method Distribution</h2>
+  <ResponsiveContainer width="100%" height={350}>
+    <PieChart>
+      <Legend 
+        layout="vertical" 
+        align="left" 
+        verticalAlign="middle" 
+      />
+      <Pie data={paymentMethodData} dataKey="count" nameKey="name" cx="60%" cy="50%" outerRadius={100} label>
+        {paymentMethodData.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        ))}
+      </Pie>
+      <Tooltip />
+    </PieChart>
+  </ResponsiveContainer>
+</div>
 
-        <div className="chart-card">
-          <h2>Internet Service Type</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={internetServiceData}>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="count" fill="#ff7300" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+
+<div className="chart-card">
+  <h2>Internet Service Type</h2>
+  <ResponsiveContainer width="100%" height={300}>
+    <BarChart data={internetServiceData}>
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      {/* Removed Legend component to remove label box */}
+      <Bar dataKey="count" fill="#ff7300" /> 
+    </BarChart>
+  </ResponsiveContainer>
+</div>
+
 
         <div className="chart-card">
           <h2>Contract Type Distribution</h2>
@@ -279,43 +285,40 @@ predictions.forEach((customer) => {
         </div>
       
 
-
-      <div className="chart-card">
+        <div className="chart-card">
   <h2>Monthly Charges Distribution</h2>
   <ResponsiveContainer width="100%" height={300}>
-  <BarChart 
-    data={formattedMonthlyChargesData} 
-    barCategoryGap="20%" // ✅ Increases spacing between bars  
-  >
-    <XAxis 
-      dataKey="name" 
-      interval={0}  // ✅ Forces all labels to show  
-      tick={{ fontSize: 14 }}  // ✅ Keeps text straight  
-      tickMargin={15}  // ✅ Adds more spacing  
-    />
-    <YAxis />
-    <Tooltip />
-    <Legend />
-    <Bar dataKey="count" fill="#82ca9d" />
-  </BarChart>
-</ResponsiveContainer>
-
-
+    <BarChart 
+      data={formattedMonthlyChargesData} 
+      barCategoryGap="20%" // Increases spacing between bars  
+    >
+      <XAxis 
+        dataKey="name" 
+        interval={0}  // Forces all labels to show  
+        tick={{ fontSize: 14 }}  // Keeps text straight  
+        tickMargin={15}  // Adds more spacing  
+      />
+      <YAxis />
+      <Tooltip />
+      {/* Removed <Legend /> to remove label box */}
+      <Bar dataKey="count" fill="#82ca9d" />
+    </BarChart>
+  </ResponsiveContainer>
 </div>
 
 <div className="chart-card">
   <h2>Monthly Charges vs Churn</h2>
   <ResponsiveContainer width="100%" height={300}>
-  <BarChart data={churnChargesData}>
-    <XAxis dataKey="name" />
-    <YAxis tickFormatter={(value) => `₹${value}`} />
-    <Tooltip formatter={(value) => `₹${value}`} />
-    <Legend />
-    <Bar dataKey="totalCharges" fill="#ff7300" />
-  </BarChart>
-</ResponsiveContainer>
-
+    <BarChart data={churnChargesData}>
+      <XAxis dataKey="name" />
+      <YAxis tickFormatter={(value) => `₹${value}`} />
+      <Tooltip formatter={(value) => `₹${value}`} />
+      {/* Removed <Legend /> to remove label box */}
+      <Bar dataKey="totalCharges" fill="#ff7300" />
+    </BarChart>
+  </ResponsiveContainer>
 </div>
+
 
 
 <div className="chart-card">
@@ -326,11 +329,11 @@ predictions.forEach((customer) => {
         dataKey="name" 
         textAnchor="middle"
         interval={0} 
-        tick={{ fontSize: 12, angle: -20 }}  // Slightly tilted for better readability
+        tick={{ fontSize: 12, angle: -20 }} // Slightly tilted for better readability
       />
       <YAxis />
       <Tooltip />
-      <Legend />
+      {/* Removed <Legend /> to remove label box */}
       <Bar dataKey="count" fill="#0088FE" barSize={25} /> {/* Optimal bar size */}
     </BarChart>
   </ResponsiveContainer>
@@ -354,17 +357,21 @@ predictions.forEach((customer) => {
 
 <div className="chart-card">
   <h2>Service Subscription & Churn Analysis</h2>
-  <ResponsiveContainer width="100%" height={450}> {/* Increased height */}
-    <RadarChart cx="50%" cy="50%" outerRadius="90%" data={serviceData}> {/* Increased outerRadius */}
+  <ResponsiveContainer width="100%" height={500}> {/* Slightly increased height */}
+    <RadarChart cx="50%" cy="50%" outerRadius="80%" data={serviceData} margin={{ left: 50, right: 50, top: 20, bottom: 40 }}>
       <PolarGrid />
       <PolarAngleAxis 
         dataKey="service" 
-        angle={30}  // Rotates labels
-        tick={{ fontSize: 12 }} // Adjusts font size
+        tick={{ fontSize: 12, wordBreak: "break-word", width: 80 }}  // Wrap text properly
       />
-      <PolarRadiusAxis />
+      <PolarRadiusAxis angle={30} domain={[0, 'auto']} tick={{ fontSize: 12 }} />
       <Tooltip />
-      <Legend />
+      <Legend 
+        layout="vertical" 
+        verticalAlign="middle" 
+        align="left" 
+        wrapperStyle={{ left: 10, fontSize: "14px" }}  // Moves legend properly
+      />
       <Radar 
         name="Churned" 
         dataKey="churned" 
@@ -382,6 +389,9 @@ predictions.forEach((customer) => {
     </RadarChart>
   </ResponsiveContainer>
 </div>
+
+
+
 
     </div>
     </div>

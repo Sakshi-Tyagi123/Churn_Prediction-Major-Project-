@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 
+
 function App() {
   const [predictions, setPredictions] = useState([]);  // State to store predictions
   
