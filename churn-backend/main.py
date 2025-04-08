@@ -1,5 +1,10 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+
 from fastapi import FastAPI
-from api.predict import predict_churn  # Import the function from predict.py
+from api import predict_churn
 
 app = FastAPI()
 

@@ -260,7 +260,7 @@ predictions.forEach((customer) => {
 
       <div className="charts-container">
       <div className="chart-card">
-    <h2>Churn Prediction Distribution</h2>
+    <h2 className="chart-title">Churn Prediction Distribution</h2>
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={churnData}>
         <XAxis dataKey="name" />
@@ -273,7 +273,7 @@ predictions.forEach((customer) => {
   </div>
         
   <div className="chart-card">
-  <h2>Payment Method Distribution</h2>
+  <h2 className="chart-title">Payment Method Distribution</h2>
   <ResponsiveContainer width="100%" height={350}>
     <PieChart>
       <Legend 
@@ -293,7 +293,7 @@ predictions.forEach((customer) => {
 
 
 <div className="chart-card">
-  <h2>Internet Service Type</h2>
+  <h2 className="chart-title">Internet Service Type</h2>
   <ResponsiveContainer width="100%" height={300}>
     <BarChart data={internetServiceData}>
       <XAxis dataKey="name" />
@@ -307,7 +307,7 @@ predictions.forEach((customer) => {
 
 
         <div className="chart-card">
-          <h2>Contract Type Distribution</h2>
+          <h2 className="chart-title">Contract Type Distribution</h2>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie data={contractTypeData} dataKey="count" nameKey="name" cx="50%" cy="50%" outerRadius={100} label>
@@ -322,7 +322,7 @@ predictions.forEach((customer) => {
         </div>
 
         <div className="chart-card">
-          <h2>Gender Distribution</h2>
+          <h2 className="chart-title">Gender Distribution</h2>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie data={genderData} dataKey="count" nameKey="name" cx="50%" cy="50%" outerRadius={100} label>
@@ -337,7 +337,7 @@ predictions.forEach((customer) => {
         </div>
 
         <div className="chart-card">
-          <h2>Senior Citizen Distribution</h2>
+          <h2 className="chart-title">Senior Citizen Distribution</h2>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie data={seniorCitizenData} dataKey="count" nameKey="name" cx="50%" cy="50%" outerRadius={100} label>
@@ -353,7 +353,7 @@ predictions.forEach((customer) => {
       
 
         <div className="chart-card">
-  <h2>Monthly Charges Distribution</h2>
+  <h2 className="chart-title">Monthly Charges Distribution</h2>
   <ResponsiveContainer width="100%" height={300}>
     <BarChart 
       data={formattedMonthlyChargesData} 
@@ -374,7 +374,7 @@ predictions.forEach((customer) => {
 </div>
 
 <div className="chart-card">
-  <h2>Monthly Charges vs Churn</h2>
+  <h2 className="chart-title">Monthly Charges vs Churn</h2>
   <ResponsiveContainer width="100%" height={300}>
     <BarChart data={churnChargesData}>
       <XAxis dataKey="name" />
@@ -389,7 +389,7 @@ predictions.forEach((customer) => {
 
 
 <div className="chart-card">
-  <h2>Tenure Distribution</h2>
+  <h2 className="chart-title">Tenure Distribution</h2>
   <ResponsiveContainer width="100%" height={400}>
     <BarChart data={tenureData} barGap={5} barCategoryGap={20}> 
       <XAxis 
@@ -408,7 +408,7 @@ predictions.forEach((customer) => {
 
 
 <div className="chart-card">
-  <h2>Tenure Distribution</h2>
+  <h2 className="chart-title">Tenure Distribution</h2>
   <ResponsiveContainer width="100%" height={400}>
     <AreaChart data={tenureData}>
       <XAxis dataKey="name" />
@@ -423,7 +423,7 @@ predictions.forEach((customer) => {
 
 
 <div  id = "radar" className="chart-card">
-  <h2>Service Subscription & Churn Analysis</h2>
+  <h2 className="chart-title">Service Subscription & Churn Analysis</h2>
   <ResponsiveContainer width="100%" height={500}> {/* Slightly increased height */}
     <RadarChart cx="50%" cy="50%" outerRadius="80%" data={serviceData} margin={{ left: 50, right: 50, top: 20, bottom: 40 }}>
       <PolarGrid />

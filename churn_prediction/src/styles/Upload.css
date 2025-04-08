@@ -207,3 +207,87 @@ h2 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+
+/* --- Large screens (Desktops > 1200px) --- */
+@media screen and (min-width: 1201px) {
+  .upload-container {
+    padding: 60px 40px;
+  }
+
+  .step {
+    width: 140px;
+  }
+
+  .step img {
+    width: 80px;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  .upload-btn {
+    font-size: 1.1rem;
+    padding: 14px 28px;
+  }
+
+  .progress-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* --- Medium devices (Tablets in landscape, 600px–768px) --- */
+@media screen and (max-width: 767px) and (min-width: 600px) {
+  .step {
+    width: 90px;
+  }
+
+  .step img {
+    width: 50px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .upload-btn {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+  }
+
+  .progress-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* --- Small phones (max-width: 360px) --- */
+@media screen and (max-width: 360px) {
+  h2 {
+    font-size: 1.2rem;
+    margin-top: 60px;
+  }
+
+  .upload-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .step {
+    width: 80px;
+  }
+
+  .step img {
+    width: 45px;
+  }
+
+  .popup {
+    padding: 10px;
+  }
+
+  .progress-text {
+    font-size: 0.85rem;
+  }
+}
