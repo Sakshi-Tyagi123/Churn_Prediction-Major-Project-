@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css"; // Import CSS file
 import homeIcon from "../assets/home.png"; // Import home icon image
+import React from "react";
+
 
 const Navbar = () => {
   return (

@@ -41,8 +41,9 @@
   margin-top: 40px;
 }
 
-.download-btn {
-  background-color: #007bff; /* Blue */
+/* ✅ Back Button Styling - Green Variant */
+.back-btn {
+  background-color: #28a745; /* Bootstrap Success Green */
   color: white;
   font-size: 18px;
   padding: 12px 20px;
@@ -50,13 +51,17 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 6px rgba(40, 167, 69, 0.3);
 }
 
-.download-btn:hover {
-  background-color: #0056b3; /* Darker blue */
+.back-btn:hover {
+  background-color: #218838; /* Darker Green */
+  box-shadow: 0 6px 10px rgba(40, 167, 69, 0.4);
+  transform: translateY(-2px);
 }
 
+/* 🔶 View Button Styling - Orange */
 .view-btn {
   background-color: #ff5733; /* Bright Orange */
   color: white;

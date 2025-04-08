@@ -1,15 +1,62 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../styles/Dashboard.css";
 import {
   BarChart, Bar, PieChart, Pie, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Cell,AreaChart,Area,Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 } from "recharts";
 
+
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
+
+
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const Dashboard = ({ predictions }) => {
+  const pdfRef = useRef();
+
+  const handleDownloadPDF = () => {
+    const input = pdfRef.current;
+  
+    window.scrollTo(0, 0);
+  
+    html2canvas(input, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+  
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+  
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+  
+      const ratio = pdfWidth / imgWidth;
+      const newHeight = imgHeight * ratio;
+  
+      let position = 0;
+  
+      // If content height is more than one page
+      while (position < newHeight) {
+        pdf.addImage(imgData, 'PNG', 0, position * -1, pdfWidth, newHeight);
+        position += pdfHeight;
+        if (position < newHeight) pdf.addPage();
+      }
+  
+      pdf.save('churn_prediction_dashboard.pdf');
+    });
+  };
+  
+
   if (!predictions || predictions.length === 0) {
-    return <h2>No Data Available</h2>;
+    return <h2 className="text-center mt-10 text-xl text-gray-600">No Data Available</h2>;
   }
+
+  // Data processing (can add filters, mappings, summaries, etc.)
+  const churnedCount = predictions.filter(p => p.Churn === 'Yes').length;
+  const notChurnedCount = predictions.length - churnedCount;
+  const churnRate = ((churnedCount / predictions.length) * 100).toFixed(2);
+
+
 
   // Churn Prediction Data
   const churnCounts = predictions.reduce((acc, item) => {
@@ -165,10 +212,26 @@ predictions.forEach((customer) => {
 });
 
 
+
+
+
+
   return (
+
+    
+
+
+
+
+
     <div id="dashboard" className="dashboard-container" >
+    <button className="download-btn" onClick={handleDownloadPDF}>
+      Download this Report
+    </button>
+    <div ref={pdfRef} >
       <h1 className="dashboard-title">Churn Prediction Results</h1>
       
+      <div className="dashboard-flex-container">
       {/* Table Component */}
       <div className="dashboard-card">
         <table className="dashboard-table">
@@ -190,6 +253,10 @@ predictions.forEach((customer) => {
           </tbody>
         </table>
       </div>
+
+      
+
+      <div className="charts-section">
 
       <div className="charts-container">
       <div className="chart-card">
@@ -355,7 +422,7 @@ predictions.forEach((customer) => {
 
 
 
-<div className="chart-card">
+<div  id = "radar" className="chart-card">
   <h2>Service Subscription & Churn Analysis</h2>
   <ResponsiveContainer width="100%" height={500}> {/* Slightly increased height */}
     <RadarChart cx="50%" cy="50%" outerRadius="80%" data={serviceData} margin={{ left: 50, right: 50, top: 20, bottom: 40 }}>
@@ -389,12 +456,15 @@ predictions.forEach((customer) => {
     </RadarChart>
   </ResponsiveContainer>
 </div>
+</div>
+</div>
 
 
 
 
-    </div>
-    </div>
+     </div>
+   </div>
+ </div>
   )
 }
 
