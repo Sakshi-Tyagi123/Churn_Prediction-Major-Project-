@@ -20,18 +20,16 @@ The project utilizes telecom customer data to analyze customer behavior and pred
 - **Database**: .csv files
 
 ## Screenshots
-- Home Page
+
 ![Home](https://github.com/user-attachments/assets/d3b94644-a1a6-4f08-b28c-79937d5cb4d6)
 
-- Uploading
 ![upload](https://github.com/user-attachments/assets/7039cad4-a58c-4a8e-9290-bedddd0dfa3a)
 ![upload1](https://github.com/user-attachments/assets/801cb076-d1c0-4116-bd06-1ca39b754f35)
 ![uploadSucess](https://github.com/user-attachments/assets/f39b5da9-c9f1-489d-8533-1b32103debb1)
 
-- Results
-  ![result](https://github.com/user-attachments/assets/53ac9631-3da7-48ee-8494-d576cf9886eb)
-  ![image](https://github.com/user-attachments/assets/d4c85d93-3f05-4a7d-b299-552ec5851903)
-  ![image](https://github.com/user-attachments/assets/1528df1f-25c9-4ac4-8727-e71a801974d5)
+ ![result](https://github.com/user-attachments/assets/53ac9631-3da7-48ee-8494-d576cf9886eb)
+ ![image](https://github.com/user-attachments/assets/d4c85d93-3f05-4a7d-b299-552ec5851903)
+ ![image](https://github.com/user-attachments/assets/1528df1f-25c9-4ac4-8727-e71a801974d5)
 
   ## Installation
 1. Clone the repository:
